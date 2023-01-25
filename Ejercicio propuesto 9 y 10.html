@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+
+            align-content: space-between;
+        }
+
+        form {
+            border: solid black 1px;
+            width: 35%;
+            margin-right: 40px;
+        }
+
+        #form2 {
+            border: solid 1px rgb(47, 6, 197);
+            color: blue;
+            height: fit-content;
+            min-height: 75px;
+        }
+
+        p{
+            color: blue;
+            font-size: 1.3em;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('#form2').css("display", "none");
+
+            $('input').change(function () {
+                $("#boton").text('limpiar contenido')
+                $('#form2').addClass('box');
+                $('#form2').css('display', 'block');
+                $('#seleccionado').append(`<li style="color:blue"> ${this.value}</li>`)
+                if (this.checked) {
+                    $(this).prop("disabled", true);
+                }
+
+            })
+            $('#btn').click(function () {
+                $('#form2').find('li').remove();
+                $('input').prop("checked", false)
+                $('input').prop("disabled", false)
+            })
+        })
+
+
+    </script>
+    <title>Ejercicios 9 y 10 propuestos</title>
+</head>
+
+<body>
+    <p>Indica cuál de estos espacios del instituto te gusta más</p>
+    <div class="container">
+        <form action="">
+            <input type="checkbox" value="La cafetería"> <label for="La cafetería">La cafetería</label><br>
+            <input type="checkbox" value="Aula"> <label for="Aula">Aula</label><br>
+            <input type="checkbox" value="Biblioteca"> <label for="Biblioteca">Biblioteca</label><br>
+            <input type="checkbox" value="Patio"> <label for="Patio">Patio</label><br>
+            <input type="checkbox" value="Jefatura de Estudios"> <label for="Jefatura de Estudios">Jefatura de
+                Estudios</label><br>
+            <input type="checkbox" value="Secretaría"> <label for="Secretaría">Secretaría</label><br>
+
+        </form>
+        <form id="form2">
+            <p>Usted a visitado:</p>
+            <ol id="seleccionado">
+            </ol>
+
+        </form>
+        <input type="button" value="Limpiar datos" id="btn">
+
+    </div>
+</body>
+
+</html>
